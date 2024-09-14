@@ -2,6 +2,12 @@ import { Component, PipeTransform } from '@angular/core';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { FormsModule } from '@angular/forms';
 import { transcode } from 'buffer';
+import { Speciality } from '../../interfaces/speciality';
+import { Institution } from '../../interfaces/institution';
+import { HealthInsurance } from '../../interfaces/healthInsurance';
+import { SpecialityService } from '../../services/speciality.service';
+import { HealthInsuranceService } from '../../services/health-insurance.service';
+import { InstitutionService } from '../../services/institution.service';
 
 
 
@@ -18,26 +24,30 @@ export default class EncontrarTurnoComponent {
   filterInstitutions:string='';
   filterHealthIncurances:string='';
 
-  specialities =[
-    "Especialidad 1",
-    "Especialidad 2",
-    "Especialidad 3",
-    "..."
-  ];
-  institutions: string[] =[
-    "Institucion 1",
-    "Institucion 2",
-    "Institucion 3",
-    "..."
-  ];
-  healthInsurances: string[] =[
-    "Obra Social 1",
-    "Obra Social 2",
-    "Obra Social 3",
-    "..."
-  ];
+  specialities: Speciality[] =[];
+  institutions: Institution[] =[];
+  healthInsurances: HealthInsurance[] =[];
   
+  constructor(
+    private specialityService: SpecialityService,
+    private healthInsuranceService: HealthInsuranceService,
+    private institutionService: InstitutionService
+  ){
+    // Traigo la lista de especialidades completa
+    this.specialityService.getSpecialities().subscribe((value)=> {
+      this.specialities = value
+    })
 
+    // Traigo la lista de obras sociales completa
+    this.healthInsuranceService.getHealthInsurances().subscribe((value)=> {
+      this.healthInsurances = value
+    })
+
+    // Traigo la lista de especialidades completa
+    this.institutionService.getInstitutions().subscribe((value)=> {
+      this.institutions = value
+    })
+  }
 
 
 
