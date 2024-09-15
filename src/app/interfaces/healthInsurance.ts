@@ -3,7 +3,7 @@ import { Patient } from "./patient";
 export interface HealthInsurance{
     healthInsuranceNumber:number,
     healthInsurancePlan:string,
-    healthInsuranceName:string,
+    name:string,
     healthInsuranceExpirationDate:string,
     patients:Patient[], //////////////
 }
