@@ -63,7 +63,18 @@ export default class EncontrarTurnoComponent {
   }
 
   findProperties(){
-    console.log(this.findAppointment.value)
+    if(this.findAppointment.value.institution !== ""){
+      const institution = this.institutions.find(i => i.name === this.findAppointment.value.institution)
+      console.log(institution)
+    }
+    if(this.findAppointment.value.speciality !== ""){
+      const speciality = this.specialities.find(s => s.name === this.findAppointment.value.speciality)
+      console.log(speciality)
+    }
+    if(this.findAppointment.value.HealthInsurance !== ""){
+      const healthInsurance = this.healthInsurances.find(hi => hi.name === this.findAppointment.value.HealthInsurance)
+      console.log(healthInsurance)
+    }
   }
   
   setHealthInsurance(healthInsurance: HealthInsurance){

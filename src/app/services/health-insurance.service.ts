@@ -45,4 +45,7 @@ export class HealthInsuranceService {
       }
     ]
   }
+  getHealthInsuranceByName(name: string){
+    return this.healthInsurances?.find(hi => hi.name === name);
+  }
 }
