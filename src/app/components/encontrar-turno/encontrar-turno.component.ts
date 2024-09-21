@@ -10,13 +10,14 @@ import { InstitutionService } from '../../services/institution.service';
 import { FilterPipeModule } from 'ngx-filter-pipe';
 import { NgForOf } from '@angular/common';
 import { FilterPipe } from "../../pipes/filter.pipe";
+import { RouterLink } from '@angular/router';
 
 
 
 @Component({
   selector: 'app-encontrar-turno',
   standalone: true,
-  imports: [NavbarComponent,ReactiveFormsModule,FormsModule ,FilterPipeModule, NgForOf, FilterPipe],
+  imports: [NavbarComponent,ReactiveFormsModule,FormsModule ,FilterPipeModule, NgForOf, FilterPipe, RouterLink],
   templateUrl: './encontrar-turno.component.html',
   styleUrl: './encontrar-turno.component.css'
 })
