@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HealthInsurance } from '../interfaces/healthInsurance';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../environment/environment';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,36 +17,38 @@ export class HealthInsuranceService {
     this.myApiUrl='healthinsurance'
    }
 
-  //  public getHealthInsurances(){
-  //   return this.http.get<HealthInsurance[]>(`${this.myAppUrl}${this.myApiUrl}`)
-  //  }
+    public getHealthInsurances():Observable<HealthInsurance[]>{
+     return this.http.get<HealthInsurance[]>(`${this.myAppUrl}${this.myApiUrl}${'/get-all-healthinsurance'}`)
+    }
 
-  public getHealthInsurances(){
-    return this.healthInsurances = [
-      {
-        name: 'OSDE',
-        healthInsuranceNumber: 1,
-        healthInsurancePlan: 'Plan 1',
-        healthInsuranceExpirationDate: '2021-12-01',
-        patients: []
-      },
-      {
-        name: 'Swiss Medical',
-        healthInsuranceNumber: 2,
-        healthInsurancePlan: 'Plan 2',
-        healthInsuranceExpirationDate: '2021-12-01',
-        patients: []
-      },
-      {
-        name: 'Galeno',
-        healthInsuranceNumber: 3,
-        healthInsurancePlan: 'Plan 3',
-        healthInsuranceExpirationDate: '2021-12-01',
-        patients: []
-      }
-    ]
-  }
+  // getHealthInsurances(){
+  //   return this.healthInsurances = [
+  //     {
+  //       name: 'OSDE',
+  //       healthInsuranceNumber: 1,
+  //       healthInsurancePlan: 'Plan 1',
+  //       healthInsuranceExpirationDate: '2021-12-01',
+  //       patients: []
+  //     },
+  //     {
+  //       name: 'Swiss Medical',
+  //       healthInsuranceNumber: 2,
+  //       healthInsurancePlan: 'Plan 2',
+  //       healthInsuranceExpirationDate: '2021-12-01',
+  //       patients: []
+  //     },
+  //     {
+  //       name: 'Galeno',
+  //       healthInsuranceNumber: 3,
+  //       healthInsurancePlan: 'Plan 3',
+  //       healthInsuranceExpirationDate: '2021-12-01',
+  //       patients: []
+  //     }
+  //   ]
+  // }
   getHealthInsuranceByName(name: string){
-    return this.healthInsurances?.find(hi => hi.name === name);
-  }
+     return this.healthInsurances?.find(hi => hi.name === name);
+   }
+
+
 }

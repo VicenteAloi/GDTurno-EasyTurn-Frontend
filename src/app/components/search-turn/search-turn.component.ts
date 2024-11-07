@@ -11,15 +11,16 @@ import { FilterPipeModule } from 'ngx-filter-pipe';
 import { NgForOf } from '@angular/common';
 import { FilterPipe } from "../../pipes/filter.pipe";
 import { RouterLink } from '@angular/router';
+import { Observable } from 'rxjs';
 
 
 
 @Component({
-  selector: 'app-encontrar-turno',
+  selector: 'app-search-turn',
   standalone: true,
   imports: [NavbarComponent,ReactiveFormsModule,FormsModule ,FilterPipeModule, NgForOf, FilterPipe, RouterLink],
-  templateUrl: './encontrar-turno.component.html',
-  styleUrl: './encontrar-turno.component.css'
+  templateUrl: './search-turn.component.html',
+  styleUrl: './search-turn.component.css'
 })
 export default class EncontrarTurnoComponent {
  
@@ -44,12 +45,15 @@ export default class EncontrarTurnoComponent {
     this.specialities = this.specialityService.getSpecialities();
     console.log(this.specialities)
 
-    // Traigo la lista de obras sociales completa
-    // this.healthInsuranceService.getHealthInsurances().subscribe((value)=> {
-    //   this.healthInsurances = value
-    // })
-    this.healthInsurances = this.healthInsuranceService.getHealthInsurances();
-    
+    this.healthInsuranceService.getHealthInsurances()
+      .subscribe({
+        next: (value) => {
+          this.healthInsurances = value
+        },
+        error: (error: Observable<String>) => {
+          console.log(error)
+      }
+    });
     // Traigo la lista de especialidades completa
     // this.institutionService.getInstitutions().subscribe((value)=> {
     //   this.institutions = value

@@ -1,8 +1,9 @@
 import { Routes } from '@angular/router';
 import DashboardComponent from './components/dashboard/dashboard.component';
 import InformacionEasyTurnComponent from './components/informacion-easy-turn/informacion-easy-turn.component';
-import EncontrarTurnoComponent from './components/encontrar-turno/encontrar-turno.component';
 import { MyAppointmentsComponent } from './components/my-appointments/my-appointments.component';
+import  SearchTurnComponent  from './components/search-turn/search-turn.component';
+import { LoginComponent } from './components/login/login.component';
 
 export const routes: Routes = [
     {
@@ -15,10 +16,13 @@ export const routes: Routes = [
     },
     {
         path: 'buscarturno',
-        component:EncontrarTurnoComponent
+        component:SearchTurnComponent
     },
     {
         path: 'buscarturno/Mis-turnos',
         component:MyAppointmentsComponent
+    },{
+        path:'login',
+        component:LoginComponent
     }
 ];
