@@ -8,7 +8,7 @@ import { SpecialityService } from '../../services/speciality.service';
 import { HealthInsuranceService } from '../../services/health-insurance.service';
 import { InstitutionService } from '../../services/institution.service';
 import { FilterPipeModule } from 'ngx-filter-pipe';
-import { NgForOf } from '@angular/common';
+import { NgForOf, NgIf } from '@angular/common';
 import { FilterPipe } from "../../pipes/filter.pipe";
 import { RouterLink } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -18,7 +18,7 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'app-search-turn',
   standalone: true,
-  imports: [NavbarComponent,ReactiveFormsModule,FormsModule ,FilterPipeModule, NgForOf, FilterPipe, RouterLink],
+  imports: [NavbarComponent,ReactiveFormsModule,FormsModule ,FilterPipeModule,NgIf, NgForOf, FilterPipe, RouterLink],
   templateUrl: './search-turn.component.html',
   styleUrl: './search-turn.component.css'
 })
@@ -28,7 +28,7 @@ export default class EncontrarTurnoComponent {
   filterInstitutions:string='';
   filterHealthIncurances:string='';
 
-  specialities: Speciality[] =[];
+  specialities: Speciality[] = [];
   institutions: Institution[] =[];
   healthInsurances: HealthInsurance[] =[];
   
@@ -38,10 +38,7 @@ export default class EncontrarTurnoComponent {
     private healthInsuranceService: HealthInsuranceService,
     private institutionService: InstitutionService
   ){
-    // Traigo la lista de especialidades completa
-    // this.specialityService.getSpecialities().subscribe((value)=> {
-    //   this.specialities = value
-    // })
+
     this.specialities = this.specialityService.getSpecialities();
     console.log(this.specialities)
 
@@ -49,16 +46,23 @@ export default class EncontrarTurnoComponent {
       .subscribe({
         next: (value) => {
           this.healthInsurances = value
+          console.log(this.healthInsurances)
         },
         error: (error: Observable<String>) => {
           console.log(error)
       }
     });
-    // Traigo la lista de especialidades completa
-    // this.institutionService.getInstitutions().subscribe((value)=> {
-    //   this.institutions = value
-    // })
-    this.institutions = this.institutionService.getInstitutions();
+  
+    this.institutionService.getInstitutions()
+      .subscribe({
+        next: (value) => {
+          this.institutions = value
+          console.log(this.institutions)
+        },
+        error: (error: Observable<String>) => {
+          console.log(error)
+      }
+    });
 
     this.findAppointment = new FormGroup({
       institution: new FormControl<String>(""),

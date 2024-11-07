@@ -10,9 +10,9 @@
                 <div class="col">
                     <span class="input-group-text" id="inputGroup-sizing-default">Buscá por especialidad y/o profesional</span>
                     <div class="input-group mb-3">
-                        <input type="search" [value]="this.findAppointment.get('speciality')?.value" [(ngModel)]="filterSpeciality" [ngModelOptions]="{standalone: true}" class="form-control" data-bs-toggle="dropdown" aria-label="Sizing example input" placeholder="Especialidad">
+                        <input [disabled]="this.specialities.length==0 ? true:false" type="search" [value]="this.findAppointment.get('speciality')?.value" [(ngModel)]="filterSpeciality" [ngModelOptions]="{standalone: true}" class="form-control" data-bs-toggle="dropdown" aria-label="Sizing example input" placeholder="Especialidad">
                         <ul class="dropdown-menu">
-                            <li *ngFor="let especiality of specialities | filter: filterSpeciality" >
+                            <li *ngFor="let especiality of specialities | filter: filterSpeciality">
                                 <a class="dropdown-item" (click)="setEspeciality(especiality)">{{especiality.name}}</a>
                             </li>
                         </ul>
@@ -22,7 +22,7 @@
                 <div class="col">
                     <span class="input-group-text" id="inputGroup-sizing-default">Buscá por institución o zona</span>
                     <div class="input-group mb-3">
-                        <input type="text" [value]="this.findAppointment.get('institution')?.value" [(ngModel)]="filterInstitutions" [ngModelOptions]="{standalone: true}" class="form-control" data-bs-toggle="dropdown" aria-label="Sizing example input" placeholder="Institucion">
+                        <input [disabled]="this.institutions.length==0 ? true:false" type="text" [value]="this.findAppointment.get('institution')?.value" [(ngModel)]="filterInstitutions" [ngModelOptions]="{standalone: true}" class="form-control" data-bs-toggle="dropdown" aria-label="Sizing example input" placeholder="Institucion">
                         <ul class="dropdown-menu">
                             <li *ngFor="let institution of institutions | filter: filterInstitutions">
                                 <a class="dropdown-item" (click)="setInstitution(institution)">{{institution.name}}</a>
@@ -34,7 +34,7 @@
                 <div class="col">
                     <span class="input-group-text" id="inputGroup-sizing-default">Buscá tu obra social</span>
                     <div class="input-group mb-3">
-                        <input type="text" [value]="this.findAppointment.get('HealthInsurance')?.value" [(ngModel)]="filterHealthIncurances" [ngModelOptions]="{standalone: true}" class="form-control" data-bs-toggle="dropdown" placeholder="Obra Social">
+                        <input [disabled]="this.healthInsurances.length==0 ? true:false" type="text" [value]="this.findAppointment.get('HealthInsurance')?.value" [(ngModel)]="filterHealthIncurances" [ngModelOptions]="{standalone: true}" class="form-control" data-bs-toggle="dropdown" placeholder="Obra Social">
                         <ul class="dropdown-menu">
                             <li *ngFor="let health of healthInsurances | filter:filterHealthIncurances" >
                                 <a class="dropdown-item" (click)="setHealthInsurance(health)">{{health.name}}</a>

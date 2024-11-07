@@ -6,5 +6,4 @@ export interface Institution{
     institutionAddress:string,
     institutionAddressNumber:string,
     professionals:Professional[]
-
 }
