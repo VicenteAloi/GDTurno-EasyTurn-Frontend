@@ -23,7 +23,7 @@ export class LoginComponent {
 
   onSubmit() {
     if (this.loginForm.valid) {
-      console.log('Form submitted', this.loginForm.value);
+      
       // Aquí iría la lógica de autenticación
     }
   }
