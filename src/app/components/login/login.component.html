@@ -47,11 +47,17 @@
               Ingresar
             </button>
   
-            <div class="terms">
-              <a href="#">Términos y Condiciones</a>
-              <a href="#">Política de privacidad</a>
+            <div class="terms row">
+              <a href="">Términos y Condiciones</a>
+              <a href="">Política de privacidad</a>
             </div>
           </form>
+          @if (error) {
+            <div class="message-box row">
+              <span class="title">Error de inicio</span>
+              <span class="messageError">{{error.message}}</span>
+            </div>
+          }
         </div>
       </div>
     </div>

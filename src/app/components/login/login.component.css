@@ -41,3 +41,23 @@
     margin-bottom: 10px;
   }
   
+.message-box{
+  height: auto;
+  width: auto;
+  background-color: rgba(160, 1, 1, 0.884);
+  position: absolute;
+  border-radius: 8px;
+  
+}
+.message-box .title{
+  text-align: center;
+  font-size: medium;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #ffffff;
+}
+.message-box .messageError{
+  text-align: center;
+  font-size:small;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #ffffff;
+}

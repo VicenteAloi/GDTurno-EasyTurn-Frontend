@@ -19,7 +19,7 @@ export class LoginService {
    }
 
    public login(user: UserLogin): Observable<UserLogued> {
-     return this.http.post<UserLogued>(`${this.myAppUrl}${this.myApiUrl}`, user);
+     return this.http.post<UserLogued>(`${this.myAppUrl}${this.myApiUrl}/`, user);
    }
    
 }
