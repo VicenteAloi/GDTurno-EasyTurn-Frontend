@@ -12,13 +12,14 @@ import { NgForOf, NgIf } from '@angular/common';
 import { FilterPipe } from "../../pipes/filter.pipe";
 import { RouterLink } from '@angular/router';
 import { Observable } from 'rxjs';
+import { FooterComponent } from "../footer/footer.component";
 
 
 
 @Component({
   selector: 'app-search-turn',
   standalone: true,
-  imports: [NavbarComponent,ReactiveFormsModule,FormsModule ,FilterPipeModule,NgIf, NgForOf, FilterPipe, RouterLink],
+  imports: [NavbarComponent, ReactiveFormsModule, FormsModule, FilterPipeModule, NgIf, NgForOf, FilterPipe, RouterLink, FooterComponent],
   templateUrl: './search-turn.component.html',
   styleUrl: './search-turn.component.css'
 })
@@ -39,8 +40,17 @@ export default class EncontrarTurnoComponent {
     private institutionService: InstitutionService
   ){
 
-    this.specialities = this.specialityService.getSpecialities();
-    console.log(this.specialities)
+    this.specialityService.getSpecialities()
+    .subscribe({
+      next: (value) => {
+        this.specialities = value
+        console.log( this.specialities)
+      },
+      error: (error: Observable<String>) => {
+        console.log(error)
+    }
+  });
+
 
     this.healthInsuranceService.getHealthInsurances()
       .subscribe({

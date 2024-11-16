@@ -4,13 +4,15 @@ import { LoginService } from '../../services/login.service';
 
 import { UserLogued } from '../../interfaces/userLogued';
 import { ResponseError } from '../../interfaces/responseError';
+import { NavbarComponent } from "../navbar/navbar.component";
 
 @Component({
   selector: 'app-login',
   standalone: true,
   imports: [
-    ReactiveFormsModule 
-  ],
+    ReactiveFormsModule,
+    NavbarComponent
+],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })

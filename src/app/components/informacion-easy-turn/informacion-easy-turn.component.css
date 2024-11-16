@@ -1,8 +1,7 @@
 .fondo-filtrado {
-    margin-top: 8vw;
     position: relative;
     width: 100vw;
-    height: 75vw;
+    height: 100%;
     overflow: hidden;
 }
 
@@ -27,7 +26,7 @@
 }
 .contenido h2{
     color: white;
-    margin-top: 150px;
+    margin-top: 50px;
     font-size: 60px;
 }
 
@@ -47,3 +46,143 @@
     width: 15px;
 }
 
+.col p a:hover{
+    color: #80E132;
+}
+
+.prestaciones{
+    padding: 100px 0;
+    background-color: #e1e2e6bd;
+
+}
+
+.prestaciones-content{
+    text-align: center;
+}
+
+.prestaciones-content h2{
+    font-size: 55px;
+    line-height: 70px;
+    color: #323337;
+    text-transform: uppercase;
+    padding: 0 250px;
+    margin-bottom: 15px;
+}
+
+.txt-p{
+    font-size: 16px;
+    color: #414017;
+    padding: 0 250px;
+    margin-bottom: 35px;
+}
+
+.prestaciones-group{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+
+.prestaciones-1{
+    padding: 0 25px;
+}
+
+
+.prestaciones-1 img{
+    width: 200px;
+}
+
+.prestaciones-img{
+    position: absolute;
+}
+
+.prestaciones-1 h3{
+    color: #323337;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+
+
+.general{
+    display: flex;
+}
+
+.general-1{
+    width: 50%;
+    padding: 100px 250px 100px 100px;
+    background-color: #E1E2E6;
+}
+.general-2{
+    background-image: url("https://resizer.glanacion.com/resizer/v2/el-hospital-central-de-pilar-sumara-700-personas-XGNBD4RLYZFHDHXRMMGIYC3UBI.jpeg?auth=6e5e8dfc1a8c32f672a6d4a2b894db542c8ad956aa0520d8c44df37df146c93e&width=1280&height=854&quality=70&smart=true");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 50%;
+}
+
+.general-3{
+    background-image: url("https://hospitecnia.com/sites/default/files/styles/node_teaser/public/14284942691274600_big1588425069.jpg?itok=LzdUBDfJ");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 50%;
+}
+
+h2{
+    font-size: 55px;
+    line-height: 70px;
+    color: #323337;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+p{
+    font-size: 16px;
+    color: #414247;
+    margin: 25px 0 45px 0;
+
+}
+
+.services{ 
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    padding: 100px 0;
+}
+
+.services-content{
+    text-align: center;
+}
+
+.services-content h2{
+    font-size: 55px;
+    line-height: 70px;
+    color: #F9FAFC;
+    text-transform: uppercase;
+    margin-bottom: 50ox;
+}
+
+.services-content p{
+    font-size: 16px;
+    color: #C5C5C5;
+    margin-bottom: 50px;
+    padding: 0 10px;
+}
+
+.services-group{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+
+.services-1 img{
+    width: 300px;
+    height: 200px;
+    margin-bottom: 15px;
+}
+
+.services-1 h3{
+    color: #EACCB3;
+    font-size: 18px;
+}
