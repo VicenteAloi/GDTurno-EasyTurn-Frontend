@@ -1,0 +1,50 @@
+.container{
+    margin-top: 12%;
+    margin-bottom: 20px;
+    width: 100%;
+    padding: 55px;
+    background-color: rgba(255, 255, 255, 0.651);
+    border: solid white 2px;
+    border-radius: 15px;
+}
+
+label{
+    color: rgb(0, 0, 0);
+}
+
+h4 {
+    color: rgb(0, 0, 0);
+}
+
+button{
+    background-color: #6fc429;
+    border-color:#61ac24;
+  
+}
+
+button:hover{
+    background-color: #80E132;
+    border-color:#6fc429;
+}
+
+
+.fondo-filtrado {
+    margin-top: 1w;
+    position: relative;
+    width: 100vw;
+    height: 75vw;
+    overflow: hidden;
+}
+
+.fondo-filtrado::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://st4.depositphotos.com/1325771/39154/i/450/depositphotos_391545206-stock-photo-happy-male-medical-doctor-portrait.jpg') no-repeat center center;
+    background-size: cover;
+    filter: brightness(0.4); /* Aplica el filtro deseado */
+    z-index: -1; /* Coloca el pseudo-elemento detrás del contenido */
+}

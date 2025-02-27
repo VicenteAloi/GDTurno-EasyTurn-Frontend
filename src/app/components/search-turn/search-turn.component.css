@@ -1,13 +1,10 @@
-.container {
-    margin-top: 150px;
-}
+
 
 .dropdown-menu{
     width: 100%;
 }
 
 .fondo-filtrado {
-    margin-top: 8vw;
     position: relative;
     width: 100vw;
     height: 75vw;

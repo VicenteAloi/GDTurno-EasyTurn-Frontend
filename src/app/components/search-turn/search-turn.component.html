@@ -1,0 +1,66 @@
+
+<app-navbar></app-navbar>
+
+<div class="fondo-filtrado">
+    <div class="container text-start">
+        <h2>
+        <b> Encontrá tu turno</b>
+        </h2>
+        <form [formGroup]="findAppointment" (ngSubmit)="findProperties()"> 
+            <div class="row">
+                <div class="col">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Buscá por especialidad y/o profesional</span>
+                    <div class="input-group mb-3">
+                        <input [disabled]="this.specialities.length==0 ? true:false" type="search" [value]="this.findAppointment.get('speciality')?.value" [(ngModel)]="filterSpeciality" [ngModelOptions]="{standalone: true}" class="form-control" data-bs-toggle="dropdown" aria-label="Sizing example input" placeholder="Especialidad">
+                        <ul class="dropdown-menu">
+                            <li *ngFor="let especiality of specialities | filter: filterSpeciality">
+                                <a class="dropdown-item" (click)="setEspeciality(especiality)">{{especiality.name}}</a>
+                            </li>
+                        </ul>
+                    </div> 
+                </div>
+
+                <div class="col">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Buscá por institución o zona</span>
+                    <div class="input-group mb-3">
+                        <input [disabled]="this.institutions.length==0 ? true:false" type="text" [value]="this.findAppointment.get('institution')?.value" [(ngModel)]="filterInstitutions" [ngModelOptions]="{standalone: true}" class="form-control" data-bs-toggle="dropdown" aria-label="Sizing example input" placeholder="Institucion">
+                        <ul class="dropdown-menu">
+                            <li *ngFor="let institution of institutions | filter: filterInstitutions">
+                                <a class="dropdown-item" (click)="setInstitution(institution)">{{institution.name}}</a>
+                            </li>
+                        </ul>
+                    </div> 
+                </div>
+
+                <div class="col">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Buscá tu obra social</span>
+                    <div class="input-group mb-3">
+                        <input [disabled]="this.healthInsurances.length==0 ? true:false" type="text" [value]="this.findAppointment.get('HealthInsurance')?.value" [(ngModel)]="filterHealthIncurances" [ngModelOptions]="{standalone: true}" class="form-control" data-bs-toggle="dropdown" placeholder="Obra Social">
+                        <ul class="dropdown-menu">
+                            <li *ngFor="let health of healthInsurances | filter:filterHealthIncurances" >
+                                <a class="dropdown-item" (click)="setHealthInsurance(health)">{{health.name}}</a>
+                            </li>
+                        </ul>
+                    </div> 
+                </div>
+            </div>
+            <div class="buttons">
+                <div class="containter text-end">
+                    <button class="btn btn-success" type="submit">
+                        <img src="https://images.freeimages.com/vhq/images/previews/c75/arrow-simple-way-green-102288.png" alt=""> BUSCAR
+                    </button>
+                    
+                </div> 
+                <div class="containter text-end mt-3">
+                   
+                    <button class="btn btn-success" type="submit" routerLink="Mis-turnos">
+                        <img src="https://images.freeimages.com/vhq/images/previews/c75/arrow-simple-way-green-102288.png" alt=""> MIS TURNOS / CANCELAR TURNOS
+                    </button>
+                </div>  
+            </div>
+        </form>
+    </div>
+    
+</div>
+
+<app-footer></app-footer>
