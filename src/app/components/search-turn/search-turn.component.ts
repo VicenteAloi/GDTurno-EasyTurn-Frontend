@@ -19,7 +19,7 @@ import { FooterComponent } from "../footer/footer.component";
 @Component({
   selector: 'app-search-turn',
   standalone: true,
-  imports: [NavbarComponent, ReactiveFormsModule, FormsModule, FilterPipeModule, NgIf, NgForOf, FilterPipe, RouterLink, FooterComponent],
+  imports: [NavbarComponent, ReactiveFormsModule, FormsModule, FilterPipeModule, NgForOf, FilterPipe, RouterLink, FooterComponent],
   templateUrl: './search-turn.component.html',
   styleUrl: './search-turn.component.css'
 })

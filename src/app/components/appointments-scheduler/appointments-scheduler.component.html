@@ -1,0 +1,52 @@
+<div class="scheduler-container">
+  <header class="header">
+    <div class="logo-container">
+      <svg class="clipboard-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <h1>EasyTurn</h1>
+    </div>
+    <p>Reserva tu turno de manera fácil y rápida</p>
+  </header>
+
+  <main class="main-content">
+    <div class="calendar-section">
+      <h2>Selecciona una fecha</h2>
+      <div class="calendar">
+        <div class="calendar-header">
+          <button (click)="previousMonth()" class="month-nav">&lt;</button>
+          <span><p class="mes">{{ getMonthYearString() }}</p></span>
+          <button (click)="nextMonth()" class="month-nav">&gt;</button>
+        </div>
+        <div class="calendar-grid">
+          <div *ngFor="let day of weekDays" class="weekday">{{ day }}</div>
+          <button *ngFor="let day of calendarDays" 
+                  [class.other-month]="!day.isCurrentMonth"
+                  [class.selected]="selectedDate?.getDate() === day.date && day.isCurrentMonth"
+                  (click)="selectDate(day)"
+                  class="day" 
+                  [disabled]="(day.date < now.getDay()+1) && now.getMonth() <= this.currentMonth.getMonth()">
+            {{ day.date }}
+          </button>
+        </div>
+      </div>    
+    </div>
+
+    <div class="time-slots-section">
+      <h2>Horarios disponibles</h2>
+      <div class="time-slots-grid">
+        <button *ngFor="let time of timeSlots"
+                (click)="selectTime(time)"
+                [class.selected]="selectedTime === time"
+                class="time-slot">
+          {{ time }}
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <button class="reserve-button" [disabled]="!selectedDate || !selectedTime">
+    Reservar Turno
+  </button>
+</div>
+
