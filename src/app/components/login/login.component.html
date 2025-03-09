@@ -1,65 +1,44 @@
-<app-navbar></app-navbar>
-<div class="login-container">
-    <div class="login-content">
-      <!-- Lado izquierdo - Imagen y texto -->
-    <div class="login-left">
-      <img src="https://paciente.gored.com.ar/assets/login/img-login-pp-go.jpeg">
+
+
+  <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+    <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+      <img class="mx-auto h-20 w-auto" src="https://img.icons8.com/?size=100&id=kDMAGBvpqAyW&format=png&color=000000" alt="Your Company">
+      <h2 class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">Portal de pacientes</h2>
     </div>
-      <!-- Lado derecho - Formulario -->
-      <div class="login-right">
-        <div class="login-form-container">
-          <h1 class="form-title">Portal Paciente</h1>
-          <h2 class="login-subtitle">Iniciar sesión</h2>
-          
-          <div class="register-link">
-            No tenes cuenta? | <a href="#" class="create-account">Crea tu cuenta</a>
+  
+    <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+      <form class="space-y-6" method="POST" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div>
+          <label for="email" class="block text-sm/6 font-medium text-gray-900">Direccion de email</label>
+          <div class="mt-2">
+            <input type="email" formControlName="email" id="email" autocomplete="email" required class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
           </div>
-  
-          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
-            <div class="form-group">
-              <input 
-                type="email" 
-                formControlName="email" 
-                placeholder="Email"
-                class="form-input">
-            </div>
-  
-            <div class="form-group">
-              <div class="password-input">
-                <input 
-                  [type]="hidePassword ? 'password' : 'text'"
-                  formControlName="password" 
-                  placeholder="Clave"
-                  class="form-input">
-                <button 
-                  type="button"
-                  class="toggle-password"
-                  (click)="hidePassword = !hidePassword">
-                  <i class="material-icons">{{hidePassword ? 'visibility_off' : 'visibility'}}</i>
-                </button>
-              </div>
-            </div>
-  
-            <div class="forgot-password">
-              <a href="#">¿Te olvidaste tu contraseña?</a>
-            </div>
-  
-            <button type="submit" class="submit-button" [disabled]="!loginForm.valid">
-              Ingresar
-            </button>
-  
-            <div class="terms row">
-              <a href="">Términos y Condiciones</a>
-              <a href="">Política de privacidad</a>
-            </div>
-          </form>
-          @if (error) {
-            <div class="message-box row">
-              <span class="title">Error de inicio</span>
-              <span class="messageError">{{error.message}}</span>
-            </div>
+          @if(!this.loginForm.get('email')!.valid && this.loginForm.get('email')!.touched) {
+            <p class="text-red-500 text-sm/6 mt-1">{{this.messageWarningEmail}}</p>
           }
         </div>
-      </div>
+        <div>
+          <div class="flex items-center justify-between">
+            <label for="password" class="block text-sm/6 font-medium text-gray-900">Contraseña</label>
+            <div class="text-sm">
+              <a href="#" class="font-semibold text-indigo-600 hover:text-indigo-500">Olvidaste tu contraseña?</a>
+            </div>
+          </div>
+          <div class="mt-2">
+            <input type="password" formControlName="password" id="password" autocomplete="current-password" required class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
+          </div>
+          @if(!this.loginForm.get('password')!.valid && this.loginForm.get('password')!.touched) {
+            <p class="text-red-500 text-sm/6 mt-1">{{this.messageWarningPassword}}</p>
+          }
+        </div>
+  
+        <div>
+          <button type="submit" [disabled]="!loginForm.valid" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" style="border-radius: 1rem;">Ingresar</button>
+        </div>
+      </form>
+      <button class="w-full justify-center rounded-md bg-gray-100 px-3 py-1.5 text-sm/6 font-semibold text-gray-900 shadow-xs hover:bg-indigo-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-300 mt-2" style="border-radius: 1rem;" routerLink="/">Volver</button>
+     
     </div>
   </div>
+
+

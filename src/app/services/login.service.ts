@@ -15,11 +15,11 @@ export class LoginService {
 
   constructor(private http:HttpClient) {
     this.myAppUrl = environment.endpoint;
-    this.myApiUrl = 'login';
+    this.myApiUrl = 'auth/login';
    }
 
    public login(user: UserLogin): Observable<UserLogued> {
-     return this.http.post<UserLogued>(`${this.myAppUrl}${this.myApiUrl}/`, user);
+     return this.http.post<UserLogued>(`${this.myAppUrl}${this.myApiUrl}`, user);
    }
    
 }

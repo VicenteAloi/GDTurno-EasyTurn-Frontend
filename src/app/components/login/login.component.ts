@@ -1,51 +1,49 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControlName, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { LoginService } from '../../services/login.service';
 
-import { UserLogued } from '../../interfaces/userLogued';
 import { ResponseError } from '../../interfaces/responseError';
-import { NavbarComponent } from "../navbar/navbar.component";
+import { RouterLink } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { ResponseLogin } from '../../interfaces/responses/responseLogin';
+
 
 @Component({
   selector: 'app-login',
   standalone: true,
   imports: [
     ReactiveFormsModule,
-    NavbarComponent
+    RouterLink
 ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
   loginForm: FormGroup;
-  hidePassword = true;
-  error?:ResponseError;
+  messageWarningEmail: string = "el campo email es requerido";
+  messageWarningPassword: string = "El campo contraseña es requerido";
 
-  constructor(private fb: FormBuilder, private loginService: LoginService) {
+  constructor(private fb: FormBuilder, private loginService: LoginService, private toastr: ToastrService) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
+      role: ['PATIENT']
     });
   }
 
-  onSubmit() {
-    if (this.loginForm.valid) {
-        this.loginService.login(this.loginForm.value).subscribe(
-          {
-            next: (response:UserLogued) => {
-              console.log(response);
-            },
-            error: (error) => {
-                console.log(error);
-                this.error = error;
-                setTimeout(() => {
-                  this.error = undefined;
-                }, 3500);
-            }
-          }
-        );
-
-    }};
+  public onSubmit():void {
+    if(this.loginForm.valid){
+      this.loginService.login(this.loginForm.value).subscribe(
+        (response:ResponseLogin) => {
+          console.log(response);
+          this.toastr.success('Bienvenido', 'Inicio de sesión correcto');
+        },
+        (error:ResponseError) => {
+          this.toastr.error(error.message, 'Error de autenticación');
+        }
+      );
+    }
+   };
 
 }
 
