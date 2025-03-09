@@ -14,11 +14,11 @@ export class HealthInsuranceService {
   healthInsurances?: HealthInsurance[];
   constructor(private http: HttpClient) {
     this.myAppUrl= environment.endpoint;
-    this.myApiUrl='healthinsurance'
+    this.myApiUrl='healthinsurance/get-all';
    }
 
     public getHealthInsurances():Observable<HealthInsurance[]>{
-     return this.http.get<HealthInsurance[]>(`${this.myAppUrl}${this.myApiUrl}${'/'}`)
+     return this.http.get<HealthInsurance[]>(`${this.myAppUrl}${this.myApiUrl}`)
     }
 
 }

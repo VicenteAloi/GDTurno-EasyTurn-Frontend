@@ -3,10 +3,9 @@ import { FormBuilder, FormControlName, FormGroup, ReactiveFormsModule, Validator
 import { LoginService } from '../../services/login.service';
 
 import { ResponseError } from '../../interfaces/responseError';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ResponseLogin } from '../../interfaces/responses/responseLogin';
-
 
 @Component({
   selector: 'app-login',
@@ -22,12 +21,18 @@ export class LoginComponent {
   loginForm: FormGroup;
   messageWarningEmail: string = "el campo email es requerido";
   messageWarningPassword: string = "El campo contraseña es requerido";
+  role: string = 'PATIENT';
 
-  constructor(private fb: FormBuilder, private loginService: LoginService, private toastr: ToastrService) {
+  constructor(private fb: FormBuilder, private loginService: LoginService, private toastr: ToastrService, private activateRouter: ActivatedRoute) {
+
+    this.activateRouter.params.subscribe(params => {
+      this.role = params['role'].toUpperCase();
+    });
+
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
-      role: ['PATIENT']
+      role: [this.role]
     });
   }
 

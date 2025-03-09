@@ -7,6 +7,7 @@ import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/
 import { serverErrorInterceptor } from './interceptors/server-error.interceptor';
 import { provideToastr } from 'ngx-toastr';
 import { provideAnimations } from '@angular/platform-browser/animations';
+import {CookieService} from 'ngx-cookie-service';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }), 
@@ -15,5 +16,6 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withInterceptors([serverErrorInterceptor]),withFetch()),
     provideAnimations(), // required animations providers
     provideToastr(), // Toastr providers
+    CookieService
   ]
 };
