@@ -8,13 +8,17 @@ import { ToastrService } from 'ngx-toastr';
 import { ResponseLogin } from '../../interfaces/responses/responseLogin';
 import { StoradgeService } from '../../services/storadge.service';
 import { JwtService } from '../../services/jwt.service';
+import { NavbarComponent } from "../navbar/navbar.component";
+import { FooterComponent } from "../footer/footer.component";
 
 @Component({
   selector: 'app-login',
   standalone: true,
   imports: [
     ReactiveFormsModule,
-    RouterLink
+    RouterLink,
+    NavbarComponent,
+    FooterComponent
 ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'

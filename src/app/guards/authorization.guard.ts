@@ -13,14 +13,14 @@ export const authorizationGuard: CanActivateFn = (route, state) => {
   console.log(token);
 
   if (!token) {
-    router.navigate(['']);
+    router.navigate(['/login/patient']);
     return false;
   }
 
   const role = jwtService.getRoleFromToken(token);
 
   if(route.url[0].path !== role.toLowerCase()) {
-    router.navigate(['']);
+    router.navigate(['/login/patient']);
     return false;
   }
 

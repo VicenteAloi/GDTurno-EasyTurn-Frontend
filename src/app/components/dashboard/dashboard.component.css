@@ -1,86 +1,87 @@
 
-.fondo-filtrado {
+.background-filter {
     margin-top: 1w;
     position: relative;
-    width: 100vw;
-    height: 75vw;
-    overflow: hidden;
+    width: 100%;
+    height: 100vh;
+    
 }
 
-.fondo-filtrado::before {
+.background-filter::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 100vh;  
     background: url('https://st4.depositphotos.com/1325771/39154/i/450/depositphotos_391545206-stock-photo-happy-male-medical-doctor-portrait.jpg') no-repeat center center;
     background-size: cover;
     filter: brightness(0.4); /* Aplica el filtro deseado */
     z-index: -1; /* Coloca el pseudo-elemento detrás del contenido */
 }
 
-.contenido {
+.contain {
     position: relative;
     color: white;
     padding: 20px;
     font-size: 2em;
+    height: 100vh;
 }
-.contenido h2{
+.contain h2{
     color: white;
     margin-top: 150px;
     font-size: 75px;
 }
 
-.contenido p{
+.contain p{
     color: white;
     font-size: 25px;
 } 
 
-.contenido a{
+.contain a{
     color: #80E132;
     font-size: 15px;
     text-decoration: none;
 }
 
-.contenido a img {
+.contain a img {
     width: 15px;
 }
 
-.contenido a:hover {
+.contain a:hover {
     border-bottom: 1px solid;
   }
 
 
-.ingreso {
+.in-button {
     position: relative;
     background-color: rgb(38, 103, 179);
     color: white;
     padding: 20px;
     font-size: 2em;
 }
-.ingreso h2{
+.in-button h2{
     color: white;
     font-size: 45px;
 }
 
-.ingreso p{
+.in-button p{
     color: white;
     font-size: 15px;
 } 
 
-.ingreso a{
+.in-button a{
     margin-top: 15px;
     color: #ffffff;
     font-size: 12px;
     text-decoration: none;
 }
 
-.ingreso a img {
+.in-button a img {
     width: 12px;
 }
 
-.ingreso a:hover {
+.in-button a:hover {
     border-bottom: 1px solid;
   }
 
@@ -100,4 +101,44 @@ footer h2{
 ul{
     list-style-type: none;
     margin-left: 17vw;
+}
+
+.introduction{
+    font:100 1.5em 'Roboto', sans-serif;
+    color: white;
+    margin-top: 10px;
+
+}
+
+
+@media screen and (max-width: 768px) {
+    .contain h2{
+        font-size: 45px;
+    }
+    .contain p{
+        font-size: 15px;
+    }
+    .contain a{
+        font-size: 10px;
+    }
+    .in-button h2{
+        font-size: 30px;
+    }
+    .in-button p{
+        font-size: 10px;
+    }
+    .in-button a{
+        font-size: 8px;
+    }
+    footer h2{
+        font-size: 15px;
+        margin-left: 10vw;
+    }
+    ul{
+        margin-left: 8vw;
+    }
+    .introduction{
+        font-size: 1em;
+    }
+    
 }

@@ -1,7 +1,12 @@
 .login{
-  height:100vh;
+ 
   background-size: cover;
   background-position: center;
+  background-color: #1F2937;
+}
+
+.text-principal{
+  font-size: 1.5rem;
 }
 
 

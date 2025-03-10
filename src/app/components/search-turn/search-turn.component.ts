@@ -13,17 +13,21 @@ import { FilterPipe } from "../../pipes/filter.pipe";
 import { RouterLink } from '@angular/router';
 import { Observable } from 'rxjs';
 import { FooterComponent } from "../footer/footer.component";
+import { ToastrService } from 'ngx-toastr';
+import { FindAppointmentsListComponent } from "../find-appointments-list/find-appointments-list.component";
+import { Professional } from '../../interfaces/professional';
 
 
 
 @Component({
   selector: 'app-search-turn',
   standalone: true,
-  imports: [NavbarComponent, ReactiveFormsModule, FormsModule, FilterPipeModule, NgForOf, FilterPipe, RouterLink, FooterComponent],
+  imports: [NavbarComponent, ReactiveFormsModule, FormsModule, FilterPipeModule, NgForOf, FilterPipe, RouterLink, FooterComponent, FindAppointmentsListComponent],
   templateUrl: './search-turn.component.html',
   styleUrl: './search-turn.component.css'
 })
 export default class EncontrarTurnoComponent {
+  professionalList: any [] = [];
  
   filterSpeciality:string='';
   filterInstitutions:string='';
@@ -37,7 +41,8 @@ export default class EncontrarTurnoComponent {
   constructor(
     private specialityService: SpecialityService,
     private healthInsuranceService: HealthInsuranceService,
-    private institutionService: InstitutionService
+    private institutionService: InstitutionService,
+    private toastr: ToastrService
   ){
 
     this.specialityService.getSpecialities()
@@ -104,5 +109,29 @@ export default class EncontrarTurnoComponent {
   }
   setEspeciality(speciality: Speciality){
     this.findAppointment.controls['speciality'].setValue(speciality.name)
+  }
+
+  public onSubmit():void{
+    if(this.findAppointment.value.institution === "" && this.findAppointment.value.speciality === "" && this.findAppointment.value.HealthInsurance === ""){
+      this.toastr.warning('Por favor, seleccione al menos un filtro para buscar un turno', 'Filtros vacíos', {
+        timeOut: 1000,})
+    }else{
+      this.professionalList.push({
+            idProfessional:12,
+            professionalRegistration:"asdasdasd",
+            professionalName:"asdasdasdasd",
+            institutions:[
+              {
+                idInstitution:1,
+                name:"asdasd",
+                address:"asdasd",
+                phone:"asdasd",
+                email:"asdasd"
+              }
+            ],
+            specialities:"asdasdasdasd",
+      })
+      console.log(this.findAppointment.value)
+    }
   }
 }

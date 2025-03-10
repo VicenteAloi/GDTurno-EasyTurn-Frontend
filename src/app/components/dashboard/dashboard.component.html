@@ -1,44 +1,26 @@
 <app-navbar></app-navbar>
 
-<div class="fondo-filtrado">
-    <div class="contenido overflow-hidden text-start">
+<div class="background-filter">
+    <div class="contain overflow-hidden text-start">
         <div class="row gx-5">
         <div class="col">
             <div class="p-5">
-            
             <h2 class="title">
                 <b>Bienvenidos a EasyTurn</b>
             </h2>
             <p class="data">
                 La unión de los centros médicos más importantes de la ciudad Rosario y su región.
             </p>
-            <a routerLink="/info">
-                <img  src="https://images.freeimages.com/vhq/images/previews/c75/arrow-simple-way-green-102288.png" alt=""> conocenos
-            </a>
-    
+            <p class="introduction">
+                En EasyTurn, nos dedicamos a brindar atención médica integral con un enfoque centrado en el bienestar y la calidad de vida de nuestros pacientes. Contamos con un equipo de profesionales altamente calificados en diversas especialidades, tecnología de vanguardia y un compromiso constante con la excelencia en la salud.
+            </p>
+            <button class="bg-success hover:bg-successActive text-white text-sm py-2.5 px-5 mr-2 mb-2 rounded-xl transition duration-300" routerLink="/info">
+                Conocenos
+            </button>
             </div>
         </div>
-        <div class="col">
-            <div class="p-2">
-    
-            </div>
-        </div>
-        </div>
-        </div>
+    </div>
 </div>
-
-<div class="ingreso text-center">
-    <h2>
-        Solicita tu turno online instantáneo
-    </h2>
-    <p>
-        Ingresá y tomalo directamente de nuestra agenda.
-    </p>
-    <a routerLink="/buscarturno">
-        <img  src="https://images.freeimages.com/vhq/images/previews/c75/arrow-simple-way-green-102288.png" alt=""> INGRESAR
-    </a>
-    <app-appointment-scheduler></app-appointment-scheduler>
-</div>
-
-
 <app-footer></app-footer>
+
+

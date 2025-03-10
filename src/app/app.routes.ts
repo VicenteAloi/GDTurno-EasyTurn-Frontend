@@ -19,7 +19,7 @@ export const routes: Routes = [
         component: InformacionEasyTurnComponent
     },
     {
-        path: 'buscarturno',
+        path: 'search-turn',
         component:SearchTurnComponent
     }
     ,{
@@ -40,6 +40,10 @@ export const routes: Routes = [
         path: 'professional',
         component: ProfessionalPortalComponent,
         canActivate: [authorizationGuard]
+    },
+    {
+        path: 'my-appointments',
+        component: MyAppointmentsComponent,
     },
     {
         path:'**',

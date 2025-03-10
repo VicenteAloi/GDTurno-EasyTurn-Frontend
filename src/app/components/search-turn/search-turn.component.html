@@ -1,7 +1,7 @@
 
 <app-navbar></app-navbar>
 
-<div class="fondo-filtrado">
+<div class="background-filter">
     <div class="container text-start">
         <h2>
         <b> Encontrá tu turno</b>
@@ -46,21 +46,25 @@
             </div>
             <div class="buttons">
                 <div class="containter text-end">
-                    <button class="btn btn-success" type="submit">
+                    <button class="btn btn-success" type="submit" (click)="onSubmit()">
                         <img src="https://images.freeimages.com/vhq/images/previews/c75/arrow-simple-way-green-102288.png" alt=""> BUSCAR
                     </button>
                     
                 </div> 
                 <div class="containter text-end mt-3">
                    
-                    <button class="btn btn-success" type="submit" routerLink="Mis-turnos">
+                    <button class="btn btn-success" type="submit" routerLink="/my-appointments">
                         <img src="https://images.freeimages.com/vhq/images/previews/c75/arrow-simple-way-green-102288.png" alt=""> MIS TURNOS / CANCELAR TURNOS
                     </button>
                 </div>  
             </div>
         </form>
     </div>
-    
+    @if(this.professionalList.length>0){
+        <div class="professionalList">
+            <app-find-appointments-list [professionalsList]="professionalList"></app-find-appointments-list>
+        </div>
+    }
 </div>
 
 <app-footer></app-footer>
