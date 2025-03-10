@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-slide-bar',
@@ -8,5 +8,13 @@ import { Component } from '@angular/core';
   styleUrl: './slide-bar.component.css'
 })
 export class SlideBarComponent {
+  @Output () logOut: EventEmitter<boolean> = new EventEmitter(false);
+
+  isSidebarVisible = true;
+  isSubmenuOpen = false;
+  isDashboardSelected = false;
+
+  constructor() { }
+
 
 }
