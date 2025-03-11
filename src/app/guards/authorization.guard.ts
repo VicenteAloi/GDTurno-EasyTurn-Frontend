@@ -10,17 +10,15 @@ export const authorizationGuard: CanActivateFn = (route, state) => {
 
   const token = storadgeService.getToken();
 
-  console.log(token);
-
   if (!token) {
-    router.navigate(['/login/patient']);
+    router.navigate([`/login${state.url}`]);
     return false;
   }
 
   const role = jwtService.getRoleFromToken(token);
 
   if(route.url[0].path !== role.toLowerCase()) {
-    router.navigate(['/login/patient']);
+    router.navigate([`/login${state.url}`]);
     return false;
   }
 
