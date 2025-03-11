@@ -3,7 +3,7 @@ import { Professional } from "./professional"
 
 export interface Speciality{
     idSpeciality:number,
-    name:string,
+    specialityName:string,
     specialityDescription:string,
     professionals:Professional[],
     appointments:Appointment[]

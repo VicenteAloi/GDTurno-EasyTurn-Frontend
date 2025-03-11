@@ -1,11 +1,6 @@
 import { Injectable } from '@angular/core';
 import { jwtDecode } from "jwt-decode";
-
-interface Payload {
-  role: string;
-  iat: number;
-  exp: number;
-}
+import { PayloadToken } from '../interfaces/responses/payload-token';
 
 
 @Injectable({
@@ -18,7 +13,19 @@ export class JwtService {
   constructor() { }
 
   public getRoleFromToken(token: string): string {
-    const payload = jwtDecode(token) as Payload;
+    const payload = jwtDecode(token) as PayloadToken;
     return payload.role
   }
+
+  public isTokenExpired(token: string): boolean {
+    const payload = jwtDecode(token) as PayloadToken;
+    return Date.now() >= payload.exp * 1000;
+  }
+
+  public getIdUserFromToken(token: string): number {
+    const payload = jwtDecode(token) as PayloadToken;
+    return payload.idUser;
+  }
+
+ 
 }

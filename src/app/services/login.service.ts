@@ -4,6 +4,7 @@ import { environment } from '../environment/environment';
 import { UserLogin } from '../interfaces/userLogin';
 import { Observable } from 'rxjs';
 import { UserLogued } from '../interfaces/userLogued';
+import { ResponseLogin } from '../interfaces/responses/responseLogin';
 
 @Injectable({
   providedIn: 'root'
@@ -18,8 +19,8 @@ export class LoginService {
     this.myApiUrl = 'auth/login';
    }
 
-   public login(user: UserLogin): Observable<UserLogued> {
-     return this.http.post<UserLogued>(`${this.myAppUrl}${this.myApiUrl}`, user);
+   public login(user: UserLogin): Observable<ResponseLogin> {
+     return this.http.post<ResponseLogin>(`${this.myAppUrl}${this.myApiUrl}`, user);
    }
    
 }

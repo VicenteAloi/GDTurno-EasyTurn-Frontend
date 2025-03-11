@@ -29,7 +29,17 @@ export const routes: Routes = [
     {
         path:'patient',
         canActivate: [authorizationGuard],
-        component: PatientPortalComponent
+        component: PatientPortalComponent,
+        children:[
+            {
+                path:"",
+                loadComponent: () => import('./components/table/table.component').then(m => m.TableComponent)
+            }
+            ,{
+                path:"form-modify/:id",
+                loadComponent: () => import('./components/form-modify/form-modify.component').then(m => m.FormModifyComponent)
+            }
+        ]
     },
     {
         path:'admin',

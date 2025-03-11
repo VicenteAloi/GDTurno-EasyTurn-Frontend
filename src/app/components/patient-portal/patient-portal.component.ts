@@ -1,17 +1,21 @@
 
 import { Component } from '@angular/core';
 import { SlideBarComponent } from "../slide-bar/slide-bar.component";
-import { TableComponent } from "../table/table.component";
 import { StoradgeService } from "../../services/storadge.service";
-import { Router } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { PatientService } from '../../services/patient.service';
+import { Patient } from '../../interfaces/patient';
+import { ResponseError } from '../../interfaces/responseError';
+import { Appointment } from '../../interfaces/appointment';
+import { AppComponent } from "../../app.component";
 
 @Component({
   selector: 'app-patient-portal',
   standalone: true,
   imports: [
     SlideBarComponent,
-    TableComponent
+    RouterOutlet
 ],
   templateUrl: './patient-portal.component.html',
   styleUrl: './patient-portal.component.css'
@@ -22,11 +26,33 @@ export class PatientPortalComponent {
   isSubmenuOpen = false;
   isDashboardSelected = false;
 
+  spinnerVisible = true;
+
+  currentPatient?: Patient;
+  appointments: Appointment[] = [];
+
   constructor(
     private storadgeService: StoradgeService,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private patientService: PatientService
   ) { }
+
+  ngOnInit(): void {
+    const token = this.storadgeService.getToken();
+    this.patientService.getPatientLogued(token!).subscribe(
+      (response) => {
+        this.currentPatient = response;
+        console.log(response);
+      },
+      (error:ResponseError) => {
+        this.toastr.error('Error',error.message);
+        console.log(error);
+      }
+    );
+  }
+
+
 
   public logOut():void {
     this.storadgeService.removeToken();

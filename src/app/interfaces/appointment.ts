@@ -1,13 +1,17 @@
-import { TimeInterval } from "rxjs/internal/operators/timeInterval";
+
+import { Patient } from "./patient";
+import { Professional } from "./professional";
+
+import { Diagnosis } from "./diagnosis";
+import { Speciality } from "./speciality";
 
 export interface Appointment{
     idAppointment:number,
-    appointmentDate:Date,
-    appointmentTime:Date,
-    appointmentStatus:string,
-    patientValoration:string,
-    patientEmail:string,
-    professionalRegistration:string,
-
-
+    appointment_datetime:Date,
+    status:string,
+    valoration:string,
+    patient:Patient,
+    professional:Professional,
+    diagnosis: Diagnosis,
+    speciality:Speciality
 }
